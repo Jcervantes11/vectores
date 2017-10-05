@@ -1,0 +1,129 @@
+#include <iostream>
+void menu(int menu);
+using namespace std;
+
+int menu();
+void llenar(int v[],int t);
+void mostrar(int v[],int t);
+void mostrarInverso(int v[],int t);
+int suma(int v[], int t);
+void girarArriba(int v[], int t);
+void girarAbajo(int v[],int t);
+void invertir(int v[], int t);
+void intercambia(int &c, int &f);
+int main()
+{
+
+    int v[10];
+    int op;
+do
+    {
+    op=menu();
+    if (op==1)
+    {
+        llenar(v,10);
+    }
+    else if (op==2)
+    {
+        mostrar(v,10);
+    }
+    else if (op==3)
+    {
+        mostrarInverso(v,10);
+    }
+    else if (op==4)
+    {
+        suma(v,10);
+    }
+    else if (op==5)
+    {
+        girarArriba(v,10);
+    }
+    else if (op==6)
+    {
+        girarAbajo(v,10);
+    }
+    else if (op==7)
+    {
+        invertir(v,10);
+    }
+    } while(op!=0);
+}
+
+int menu()
+{
+    int opcion;
+    cout<<"1.-Llenar con consecutivos de 1 en adelante: "<<endl;
+    cout<<"2.-Mostrar el contenido del vector asi: [0]=1, [1]=2, [2]=3... :"<<endl;
+    cout<<"3.-Mostrar el contenido en orden inverso: "<<endl;
+    cout<<"4.-Sumar: "<<endl;
+    cout<<"5.-Girar ariba: "<<endl;
+    cout<<"6.-Girar abajo: "<<endl;
+    cout<<"7.-Invertir: "<<endl;
+    cout<<"0.-Salir: "<<endl;
+    cout<<"Que opcion desea: "<<endl;
+    cout<<endl;
+    cin>>opcion;
+    cout<<endl;
+    return opcion;
+}
+void llenar(int v[],int t)
+{
+    for (int i=0;i<t;i++)
+        v[i]=i+1;
+}
+
+void mostrar(int v[],int t)
+{
+    for(int i=0;i<t;i++)
+        cout<<"v["<<i<<"]"<<"= "<<v[i]<<endl;
+        cout<<endl;
+}
+void mostrarInverso(int v[],int t)
+{
+    for(int i=t-1;i>=0;i--)
+        cout<<"v["<<i<<"]"<<"= "<<v[i]<<endl;
+        cout<<endl;
+
+}
+int suma(int v[], int t)
+{
+    int x=0;
+    for(int i=0;i<t;i++)
+        x+=v[i];
+        cout<<x<<endl;
+}
+void girarArriba(int v[], int t)
+{
+    int x=v[0];
+    for(int i=0;i<t-1;i++)
+    {
+        v[i]=v[i+1];
+    }
+    v[t-1]=x;
+}
+void girarAbajo(int v[],int t)
+{
+    int z=v[t-1];
+    for(int j=t-1;j>=1;j--)
+    {
+        v[j]=v[j-1];
+    }
+     v[0]=z;
+}
+void invertir(int v[], int t)
+{
+    int b=t-1;
+    for(int a=0;a<t/2;a++)
+    {
+        intercambia(v[a],v[b]);
+        b--;
+    }
+}
+
+void intercambia(int &c, int &f)
+{
+    int vv=c;
+    c=f;
+    f=vv;
+}
